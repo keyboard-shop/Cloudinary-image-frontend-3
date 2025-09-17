@@ -1,240 +1,5 @@
 
 
-
-// 1111 THIS CODE WORKS only image =====================================
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const ImageUpload = () => {
-//   const [image, setImage] = useState(null);
-//   const [imageUrl, setImageUrl] = useState('');
-
-//   const handleImageChange = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!image) return;
-
-//     const formData = new FormData();
-//     formData.append('file', image);
-//     formData.append('upload_preset', 'preset name'); // Replace with your upload preset
-
-//     try {
-//       const response = await axios.post(
-//         `https://api.cloudinary.com/v1_1/cloud name/image/upload`, // Replace with your Cloud Name
-//         formData
-//       );
-//       setImageUrl(response.data.secure_url);
-//       console.log('Image uploaded successfully:', response.data.secure_url);
-//     } catch (error) {
-//       console.error('Error uploading image:', error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Upload Image to Cloudinary</h2>
-//       <form onSubmit={handleSubmit}>
-//         <input type="file" onChange={handleImageChange} required />
-//         <button type="submit">Upload</button>
-//       </form>
-//       {imageUrl && (
-//         <div>
-//           <h3>Uploaded Image:</h3>
-//           <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '300px' }} />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-// export default ImageUpload;
-// 1111 THIS CODE WORKS only image ============================================================
-
-
-
-
-
-
-
-
-
-
-// 22222 =====================================================
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const ImageUpload = () => {
-//   const [image, setImage] = useState(null);
-//   const [imageUrl, setImageUrl] = useState('');
-//   const [title, setTitle] = useState('');
-//   const [author, setAuthor] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   const handleImageChange = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!image) return;
-
-//     const formData = new FormData();
-//     formData.append('file', image);
-//     formData.append('upload_preset', 'Testing_Cloudinary_for_Books'); // Replace with your upload preset
-
-//     try {
-//       const response = await axios.post(
-//         `https://api.cloudinary.com/v1_1/dtam0kqa6/image/upload`, // Replace with your Cloud Name
-//         formData
-//       );
-//       const uploadedImageUrl = response.data.secure_url;
-//       setImageUrl(uploadedImageUrl);
-//       console.log('Image uploaded successfully:', uploadedImageUrl);
-
-//       // Now send the book data to your backend
-//       const bookData = {
-//         title,
-//         author,
-//         price: parseFloat(price),
-//         imageUrl: uploadedImageUrl,
-//       };
-
-//       await axios.post('http://localhost:8080/books', bookData); // Adjust the URL as necessary
-//       console.log('Book data saved successfully');
-
-//       // Reset form fields after submission
-//       setTitle('');
-//       setAuthor('');
-//       setPrice('');
-//       setImage(null);
-//       setImageUrl('');
-//     } catch (error) {
-//       console.error('Error uploading image or saving book data:', error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Upload Image to Cloudinary</h2>
-//       <form onSubmit={handleSubmit}>
-//         <input type="file" onChange={handleImageChange} required />
-//         <input
-//           type="text"
-//           placeholder="Title"
-//           value={title}
-//           onChange={(e) => setTitle(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="text"
-//           placeholder="Author"
-//           value={author}
-//           onChange={(e) => setAuthor(e.target.value)}
-//           required
-//         />
-//         <input
-//           type="number"
-//           placeholder="Price"
-//           value={price}
-//           onChange={(e) => setPrice(e.target.value)}
-//           required
-//         />
-//         <button type="submit">Upload</button>
-//       </form>
-//       {imageUrl && (
-//         <div>
-//           <h3>Uploaded Image:</h3>
-//           <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '300px' }} />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ImageUpload;
-// 2222222 =================================================
-
-
-
-
-
-
-
-
-// 3333333 cloudinary WORKS only image ================================================================
-// import React, { useState } from 'react';
-// import axios from 'axios';
-
-// const ImageUpload = () => {
-//   const [image, setImage] = useState(null);
-//   const [imageUrl, setImageUrl] = useState('');
-//  // const [folderName, setFolderName] = useState('your_folder_name'); // Set your desired folder name in Cloudinary
-
-//   const handleImageChange = (e) => {
-//     setImage(e.target.files[0]);
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!image) return;
-
-//     const formData = new FormData();
-//     formData.append('file', image);
-//     formData.append('upload_preset', 'Testing_Cloudinary_for_Books'); // Replace with your upload preset
-//     formData.append('folder', 'books'); // Specify the particular Cloudinary folder name here
-
-//     try {
-//       const response = await axios.post(
-//         `https://api.cloudinary.com/v1_1/dtam0kqa6/image/upload`, // Replace with your Cloud Name
-//         formData
-//       );
-//       const uploadedImageUrl = response.data.secure_url;
-//       setImageUrl(uploadedImageUrl);
-//       console.log('Image uploaded successfully:', uploadedImageUrl);
-
-//       // Now send the image URL to your backend
-//       await axios.post('http://localhost:8080/books', { imageUrl: uploadedImageUrl }); // Adjust the URL as necessary
-//       console.log('Image URL saved successfully');
-      
-//       // Reset form fields after submission
-//       setImage(null);
-//       setImageUrl('');
-//     } catch (error) {
-//       console.error('Error uploading image or saving image URL:', error);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Upload Image to Cloudinary</h2>
-//       <form onSubmit={handleSubmit}>
-//         <input type="file" onChange={handleImageChange} required />
-//         <button type="submit">Upload</button>
-//       </form>
-//       {imageUrl && (
-//         <div>
-//           <h3>Uploaded Image:</h3>
-//           <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '300px' }} />
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default ImageUpload;
-// 3333333 works only image ===========================================================
-
-
-
-
-
-
-
-
-
-// 444444444444444444444 works ==================================================
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -244,8 +9,7 @@ const ImageUpload = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [price, setPrice] = useState('');
-  //const [folderName, setFolderName] = useState('your_folder_name'); // Set your desired folder name in Cloudinary
-
+ 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
@@ -256,19 +20,18 @@ const ImageUpload = () => {
 
     const formData = new FormData();
     formData.append('file', image);
-    formData.append('upload_preset', 'Testing_Cloudinary_for_Books'); // Replace with your upload preset
-    formData.append('folder', 'books'); // Specify the particular Cloudinary folder name here
+    formData.append('upload_preset', 'Testing_Cloudinary_for_Books'); //Cloudinary upload preset
+    formData.append('folder', 'books'); //the particular Cloudinary folder
 
     try {
       const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dtam0kqa6/image/upload`, // Replace with your Cloud Name
+        `https://api.cloudinary.com/v1_1/dtam0kqa6/image/upload`, // my Cloud Name
         formData
       );
       const uploadedImageUrl = response.data.secure_url;
       setImageUrl(uploadedImageUrl);
       console.log('Image uploaded successfully:', uploadedImageUrl);
 
-      // Now send the book data to your backend
       const bookData = {
         title,
         author,
@@ -276,17 +39,16 @@ const ImageUpload = () => {
         imageUrl: uploadedImageUrl,
       };
 
-      await axios.post('http://localhost:8080/books', bookData); // Adjust the URL as necessary
+      await axios.post('http://localhost:8080/books', bookData);
       console.log('Book data saved successfully');
 
-      // Reset form fields after submission
       setTitle('');
       setAuthor('');
       setPrice('');
       setImage(null);
       setImageUrl('');
     } catch (error) {
-      console.error('Error uploading image or saving book data:', error);
+      console.error('Error:', error);
     }
   };
 
@@ -327,6 +89,4 @@ const ImageUpload = () => {
     </div>
   );
 };
-
 export default ImageUpload;
-// 4444444444444444444444 works ==================================================
